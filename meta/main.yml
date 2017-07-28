@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Vladimir Botka
+  description: Install and/or update ports on FreeBSD
+  company: https://botka.link
+  license: BSD
+  github_branch: master
+  min_ansible_version: 1.2
+  platforms:
+    - name: FreeBSD
+      versions:
+        - all
+  galaxy_tags:
+    - installer
+    - freebsd
+    - ports
+dependencies: []

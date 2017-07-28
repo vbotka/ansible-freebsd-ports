@@ -1,0 +1,15 @@
+---
+# vars for freebsd-ports
+
+#freebsd_ports_list:
+#  - bash
+#  - emacs-nox11
+#  - git
+#  - gtar
+#  - pkg
+#  - portmaster
+#  - portupgrade
+#  - py27-certbot
+
+# EOF
+...

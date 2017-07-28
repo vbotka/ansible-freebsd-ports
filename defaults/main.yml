@@ -1,0 +1,16 @@
+---
+# defaults for freebsd-ports
+
+freebsd_use_packages: "no"
+freebsd_ports_list: []
+
+# portsnap cron
+freebsd_ports_portsnap_cron_enable: "no"
+freebsd_ports_portsnap_cron_user: "root"
+freebsd_ports_portsnap_cron_mailto: "root"
+freebsd_ports_portsnap_cron_hour: "*/6"
+freebsd_ports_portsnap_cron_minute: "15"
+freebsd_ports_portsnap_cron_command: "/usr/sbin/portsnap cron"
+
+# EOF
+...
