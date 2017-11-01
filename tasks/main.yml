@@ -9,6 +9,8 @@
 
 - include: ports.yml
   tags:
+    - bsd_packages
+    - bsd_ports
     - freebsd_ports_install
     - freebsd_ports_all
 
