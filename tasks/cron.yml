@@ -1,9 +1,9 @@
 ---
 
-- name: Configure cron MAILTO="{{ freebsd_ports_portsnap_cron_mailto }}"
+- name: Configure cron MAILTO={{ freebsd_ports_portsnap_cron_mailto }}
   cronvar: >
     name="MAILTO"
-    value="\"{{ freebsd_ports_portsnap_cron_mailto }}\""
+    value="{{ freebsd_ports_portsnap_cron_mailto }}"
     user="{{ freebsd_ports_portsnap_cron_user }}"
 
 - name: Configure cron to fetch a compressed snapshot of the ports tree
