@@ -2,10 +2,10 @@
 # tasks for freebsd-ports
 
 - include: cron.yml
+  when: freebsd_ports_portsnap_cron_enable == "yes"
   tags:
     - freebsd_ports_cron
     - freebsd_ports_all
-  when: freebsd_ports_portsnap_cron_enable == "yes"
 
 - include: ports.yml
   tags:
