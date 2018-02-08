@@ -1,9 +1,9 @@
 ---
 # vars for freebsd-ports
 
-#freebsd_ports_list:
+#freebsd_ports:
 #  - bash
-#  - emacs-nox11
+#  - emacs
 #  - git
 #  - gtar
 #  - pkg

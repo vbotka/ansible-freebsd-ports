@@ -2,7 +2,7 @@
 # defaults for freebsd-ports
 
 freebsd_use_packages: "no"
-freebsd_ports_list: []
+freebsd_ports: []
 
 # portsnap cron
 freebsd_ports_portsnap_cron_enable: "no"

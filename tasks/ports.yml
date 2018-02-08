@@ -5,10 +5,7 @@
     name="{{ item }}"
     state="present"
     use_packages="{{ freebsd_use_packages }}"
-  with_items: "{{ freebsd_ports_list }}"
-  tags:
-    - bsd_ports
-    - freebsd_ports_list
+  with_items: "{{ freebsd_ports }}"
 
 # EOF
 ...
