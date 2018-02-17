@@ -1,13 +1,13 @@
 ---
 # tasks for freebsd-ports
 
-- include: cron.yml
+- include_tasks: cron.yml
   when: freebsd_ports_portsnap_cron_enable|lower == "yes"
   tags:
     - freebsd_ports_cron
     - freebsd_ports_all
 
-- include: ports.yml
+- include_tasks: ports.yml
   tags:
     - bsd_packages
     - bsd_ports

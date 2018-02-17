@@ -72,3 +72,6 @@ References
 ----------
 
 - [FreeBSD handbook: 4.5. Using the Ports Collection](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports-using.html)
+- [FreeBSD handbook: 4.6. Building Packages with Poudriere](https://www.freebsd.org/doc/handbook/ports-poudriere.html)
+- [poudriere](https://github.com/freebsd/poudriere/wiki)
+
