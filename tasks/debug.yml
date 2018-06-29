@@ -1,0 +1,27 @@
+---
+
+- name: "FreeBSD postinstall Debug"
+  vars:
+    msg: |
+         ansible_architecture [ {{ ansible_architecture }} ]
+         ansible_os_family [ {{ ansible_os_family }} ]
+         ansible_distribution [ {{ ansible_distribution }} ]
+         ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+         ansible_distribution_version [ {{ ansible_distribution_version }} ]
+         ansible_distribution_release [ {{ ansible_distribution_release }} ]
+
+         freebsd_use_packages [ {{ freebsd_use_packages }} ]
+         freebsd_ports_state [ {{ freebsd_ports_state }} ]
+         freebsd_ports
+         {{ freebsd_ports | to_nice_yaml }}
+         freebsd_ports_portsnap_cron_enable [ {{ freebsd_ports_portsnap_cron_enable }} ]
+         freebsd_ports_portsnap_cron_user [ {{ freebsd_ports_portsnap_cron_user }} ]
+         freebsd_ports_portsnap_cron_mailto [ {{ freebsd_ports_portsnap_cron_mailto }} ]
+         freebsd_ports_portsnap_cron_hour [ {{ freebsd_ports_portsnap_cron_hour }} ]
+         freebsd_ports_portsnap_cron_minute [ {{ freebsd_ports_portsnap_cron_minute }} ]
+         freebsd_ports_portsnap_cron_command [ {{ freebsd_ports_portsnap_cron_command }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+
+# EOF
+...

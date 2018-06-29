@@ -3,7 +3,7 @@ freebsd-ports
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-ports.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-ports)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-ports/). Install and/or update ports at FreeBSD
+[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-ports/). FreeBSD. Install and update ports.
 
 
 Requirements
@@ -15,7 +15,7 @@ None.
 Variables
 ---------
 
-
+TBD. Review the defaults.
 
 Workflow
 --------
@@ -23,29 +23,27 @@ Workflow
 1) Change shell to /bin/sh.
 
 ```
-ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
+# ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
 2) Install role.
 
 ```
-ansible-galaxy install vbotka.freebsd-ports
+# ansible-galaxy install vbotka.freebsd-ports
 ```
 
 3) Fit variables.
 
 ```
-~/.ansible/roles/vbotka.freebsd-ports/vars/main.yml
+# editor vbotka.freebsd-ports/vars/main.yml
 ```
 
 4) Create playbook.
 
 ```
-> cat ~/.ansible/playbooks/freebsd-ports.yml
----
-- hosts: example.com
-  become: yes
-  become_method: sudo
+# cat freebsd-ports.yml
+
+- hosts: srv.example.com
   roles:
     - role: vbotka.freebsd-ports
 ```
@@ -53,7 +51,7 @@ ansible-galaxy install vbotka.freebsd-ports
 5) Configure the system.
 
 ```
-ansible-playbook ~/.ansible/playbooks/freebsd-ports.yml
+# ansible-playbook freebsd-ports.yml
 ```
 
 License
@@ -74,4 +72,3 @@ References
 - [FreeBSD handbook: 4.5. Using the Ports Collection](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports-using.html)
 - [FreeBSD handbook: 4.6. Building Packages with Poudriere](https://www.freebsd.org/doc/handbook/ports-poudriere.html)
 - [poudriere](https://github.com/freebsd/poudriere/wiki)
-

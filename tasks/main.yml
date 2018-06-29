@@ -1,18 +1,16 @@
 ---
 # tasks for freebsd-ports
 
-- include_tasks: cron.yml
-  when: freebsd_ports_portsnap_cron_enable|lower == "yes"
-  tags:
-    - freebsd_ports_cron
-    - freebsd_ports_all
+- import_tasks: debug.yml
+  when: freebsd_ports_debug
+  tags: freebsd_ports_debug
 
-- include_tasks: ports.yml
-  tags:
-    - bsd_packages
-    - bsd_ports
-    - freebsd_ports_install
-    - freebsd_ports_all
+- import_tasks: ports.yml
+  tags: freebsd_ports_install
+
+- import_tasks: cron.yml
+  when: freebsd_ports_portsnap_cron_enable
+  tags: freebsd_ports_cron
 
 # EOF
 ...

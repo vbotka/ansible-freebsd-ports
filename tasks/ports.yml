@@ -1,11 +1,11 @@
 ---
 
-- name: Install ports
-  portinstall: >
-    name="{{ item }}"
-    state="present"
-    use_packages="{{ freebsd_use_packages }}"
-  with_items: "{{ freebsd_ports }}"
+- name: "Install ports"
+  portinstall:
+    name: "{{ item }}"
+    state: "{{ freebsd_ports_state }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  loop: "{{ freebsd_ports }}"
 
 # EOF
 ...

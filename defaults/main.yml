@@ -1,11 +1,14 @@
 ---
 # defaults for freebsd-ports
 
+freebsd_ports_debug: False
+
 freebsd_use_packages: "no"
+freebsd_ports_state: "present"
 freebsd_ports: []
 
 # portsnap cron
-freebsd_ports_portsnap_cron_enable: "no"
+freebsd_ports_portsnap_cron_enable: False
 freebsd_ports_portsnap_cron_user: "root"
 freebsd_ports_portsnap_cron_mailto: "root"
 freebsd_ports_portsnap_cron_hour: "*/6"
