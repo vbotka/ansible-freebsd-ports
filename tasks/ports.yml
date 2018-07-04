@@ -1,11 +1,24 @@
 ---
 
-- name: "Install ports"
+- name: "ports: Install ports from a dictionary"
+  portinstall:
+    name: "{{ item.1 }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  with_subelements:
+    - "{{ pkg_dict }}"
+    - packages
+
+- name: "ports: Install ports from a list"
   portinstall:
     name: "{{ item }}"
-    state: "{{ freebsd_ports_state }}"
     use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ freebsd_ports }}"
+  loop: "{{ pkg_list }}"
+
+- name: "ports: Deinstall ports from a list"
+  portinstall:
+    state: absent
+    name: "{{ item }}"
+  loop: "{{ pkg_list_deinstall }}"
 
 # EOF
 ...

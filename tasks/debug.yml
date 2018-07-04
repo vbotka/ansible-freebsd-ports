@@ -1,6 +1,6 @@
 ---
 
-- name: "FreeBSD postinstall Debug"
+- name: "Ports debug"
   vars:
     msg: |
          ansible_architecture [ {{ ansible_architecture }} ]
@@ -11,9 +11,12 @@
          ansible_distribution_release [ {{ ansible_distribution_release }} ]
 
          freebsd_use_packages [ {{ freebsd_use_packages }} ]
-         freebsd_ports_state [ {{ freebsd_ports_state }} ]
-         freebsd_ports
-         {{ freebsd_ports | to_nice_yaml }}
+         pkg_dict
+         {{ pkg_dict | to_yaml }}
+         pkg_list
+         {{ pkg_list | to_nice_yaml }}
+         pkg_list_deinstall
+         {{ pkg_list_deinstall | to_nice_yaml }}
          freebsd_ports_portsnap_cron_enable [ {{ freebsd_ports_portsnap_cron_enable }} ]
          freebsd_ports_portsnap_cron_user [ {{ freebsd_ports_portsnap_cron_user }} ]
          freebsd_ports_portsnap_cron_mailto [ {{ freebsd_ports_portsnap_cron_mailto }} ]

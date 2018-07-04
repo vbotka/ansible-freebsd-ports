@@ -1,6 +1,6 @@
 galaxy_info:
   author: Vladimir Botka
-  description: Install and update ports on FreeBSD
+  description: FreeBSD. Install and update ports.
   company: https://botka.link
   license: BSD
   github_branch: master
@@ -9,7 +9,7 @@ galaxy_info:
     - name: FreeBSD
       versions:
         - 10.4
-        - 11.1
+        - 11.2
   galaxy_tags:
     - FreeBSD
 dependencies: []
