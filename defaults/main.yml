@@ -3,7 +3,7 @@
 
 freebsd_ports_debug: False
 
-freebsd_use_packages: "no"
+freebsd_use_packages: "yes"
 pkg_dict: {}
 pkg_list: []
 pkg_list_deinstall: []
