@@ -3,7 +3,7 @@ freebsd-ports
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-ports.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-ports)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/freebsd-ports/). FreeBSD. Install and update ports.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-ports/) FreeBSD. Install and update ports.
 
 
 Requirements
