@@ -1,9 +1,9 @@
-freebsd-ports
-===================
+freebsd_ports
+=============
 
 [![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-ports.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-ports)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd-ports/) FreeBSD. Install and update ports.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_ports/) FreeBSD. Install and update ports.
 
 
 Requirements
@@ -29,13 +29,13 @@ Workflow
 2) Install role.
 
 ```
-# ansible-galaxy install vbotka.freebsd-ports
+# ansible-galaxy install vbotka.freebsd_ports
 ```
 
 3) Fit variables.
 
 ```
-# editor vbotka.freebsd-ports/vars/main.yml
+# editor vbotka.freebsd_ports/vars/main.yml
 ```
 
 4) Create playbook.
@@ -45,7 +45,7 @@ Workflow
 
 - hosts: srv.example.com
   roles:
-    - role: vbotka.freebsd-ports
+    - vbotka.freebsd_ports
 ```
 
 5) Configure the system.

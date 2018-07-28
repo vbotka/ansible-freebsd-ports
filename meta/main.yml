@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: freebsd_ports"
   author: Vladimir Botka
   description: FreeBSD. Install and update ports.
   company: https://botka.link
