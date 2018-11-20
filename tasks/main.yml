@@ -3,7 +3,7 @@
 
 - import_tasks: debug.yml
   when: freebsd_ports_debug
-  tags: freebsd_ports_debug
+  tags: [freebsd_ports_debug, always]
 
 - import_tasks: ports.yml
   tags: freebsd_ports_install

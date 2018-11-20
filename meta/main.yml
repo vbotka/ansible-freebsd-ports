@@ -1,3 +1,4 @@
+---
 galaxy_info:
   role_name: freebsd_ports
   author: Vladimir Botka
@@ -5,12 +6,12 @@ galaxy_info:
   company: https://botka.link
   license: BSD
   github_branch: master
-  min_ansible_version: 2.5
+  min_ansible_version: 2.7
   platforms:
     - name: FreeBSD
       versions:
-        - 10.4
         - 11.2
   galaxy_tags:
     - FreeBSD
+    - ports
 dependencies: []

@@ -1,6 +1,6 @@
 ---
 
-- name: "Ports debug"
+- name: "FreeBSD ports debug"
   vars:
     msg: |
          ansible_architecture [ {{ ansible_architecture }} ]

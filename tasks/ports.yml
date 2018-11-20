@@ -4,9 +4,7 @@
   portinstall:
     name: "{{ item.1 }}"
     use_packages: "{{ freebsd_use_packages }}"
-  with_subelements:
-    - "{{ pkg_dict }}"
-    - packages
+  loop: "{{ pkg_dict|subelements('packages') }}"
 
 - name: "ports: Install ports from a list"
   portinstall:
