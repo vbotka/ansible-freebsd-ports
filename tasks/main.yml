@@ -1,6 +1,9 @@
 ---
 # tasks for freebsd-ports
 
+- import_tasks: vars.yml
+  tags: [freebsd_ports_vars, always]
+
 - import_tasks: debug.yml
   when: freebsd_ports_debug
   tags: [freebsd_ports_debug, always]

@@ -1,0 +1,27 @@
+---
+
+- name: Set variables for i386
+  set_fact:
+    pkg_dict: "{{ pkg_dict + pkg_dict_i386 }}"
+    pkg_list: "{{ pkg_list + pkg_list_i386 }}"
+  when: ansible_architecture == "i386"
+
+- name: Set variables for amd64
+  set_fact:
+    pkg_dict: "{{ pkg_dict + pkg_dict_amd64 }}"
+    pkg_list: "{{ pkg_list + pkg_list_amd64 }}"
+  when: ansible_architecture == "amd64"
+
+- name: Set variables for arm
+  set_fact:
+    pkg_dict: "{{ pkg_dict + pkg_dict_arm }}"
+    pkg_list: "{{ pkg_list + pkg_list_arm }}"
+  when: ansible_architecture == "arm"
+
+- name: Set variables for arm64
+  set_fact:
+    pkg_dict: "{{ pkg_dict + pkg_dict_arm64 }}"
+    pkg_list: "{{ pkg_list + pkg_list_arm64 }}"
+  when: ansible_architecture == "arm64"
+
+...
