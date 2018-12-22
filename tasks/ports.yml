@@ -5,18 +5,30 @@
     name: "{{ item.1 }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ pkg_dict|subelements('packages') }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
 
 - name: "ports: Install ports from a list"
   portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ pkg_list }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
 
 - name: "ports: Deinstall ports from a list"
   portinstall:
     state: absent
     name: "{{ item }}"
   loop: "{{ pkg_list_deinstall }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
 
 # EOF
 ...
