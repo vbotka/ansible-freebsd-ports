@@ -1,15 +1,18 @@
 ---
 # defaults for freebsd-ports
 
-freebsd_ports_debug: False
-
+freebsd_install_method: "ports"
 freebsd_use_packages: "yes"
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-pkg_dict: []
+freebsd_ports_debug: False
+freebsd_ports_dryrun: False
+freebsd_ports_arch_auto: False
+
 pkg_list: []
 pkg_list_deinstall: []
+pkg_dict: []
 
 # portsnap cron
 freebsd_ports_portsnap_cron_enable: False

@@ -1,5 +1,11 @@
 ---
 
+- name: "ports: Debug list ports from a dictionary"
+  debug:
+    msg: "{{ item.1 }}"
+  loop: "{{ pkg_dict|subelements('packages') }}"
+  when: freebsd_ports_debug
+
 - name: "ports: Install ports from a dictionary"
   portinstall:
     name: "{{ item.1 }}"
@@ -9,6 +15,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
+  when: not freebsd_ports_dryrun
 
 - name: "ports: Install ports from a list"
   portinstall:
@@ -19,6 +26,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
+  when: not freebsd_ports_dryrun
 
 - name: "ports: Deinstall ports from a list"
   portinstall:
@@ -29,6 +37,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
+  when: not freebsd_ports_dryrun
 
 # EOF
 ...

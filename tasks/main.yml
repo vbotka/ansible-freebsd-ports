@@ -9,6 +9,7 @@
   tags: [freebsd_ports_debug, always]
 
 - import_tasks: ports.yml
+  when: freebsd_install_method|lower == "ports"
   tags: freebsd_ports_install
 
 - import_tasks: cron.yml
