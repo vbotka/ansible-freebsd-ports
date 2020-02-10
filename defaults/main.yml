@@ -6,16 +6,16 @@ freebsd_use_packages: "yes"
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-freebsd_ports_debug: False
-freebsd_ports_dryrun: False
-freebsd_ports_arch_auto: False
+freebsd_ports_debug: false
+freebsd_ports_dryrun: false
+freebsd_ports_arch_auto: false
 
 pkg_list: []
 pkg_list_deinstall: []
 pkg_dict: []
 
 # portsnap cron
-freebsd_ports_portsnap_cron_enable: False
+freebsd_ports_portsnap_cron_enable: false
 freebsd_ports_portsnap_cron_user: "root"
 freebsd_ports_portsnap_cron_mailto: "root"
 freebsd_ports_portsnap_cron_hour: "*/6"

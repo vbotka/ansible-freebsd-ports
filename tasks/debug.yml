@@ -3,31 +3,31 @@
 - name: "Debug FreeBSD ports"
   vars:
     msg: |
-         ansible_architecture [ {{ ansible_architecture }} ]
-         ansible_os_family [ {{ ansible_os_family }} ]
-         ansible_distribution [ {{ ansible_distribution }} ]
-         ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
-         ansible_distribution_version [ {{ ansible_distribution_version }} ]
-         ansible_distribution_release [ {{ ansible_distribution_release }} ]
+         ansible_architecture [{{ ansible_architecture }}]
+         ansible_os_family [{{ ansible_os_family }}]
+         ansible_distribution [{{ ansible_distribution }}]
+         ansible_distribution_major_version [{{ ansible_distribution_major_version }}]
+         ansible_distribution_version [{{ ansible_distribution_version }}]
+         ansible_distribution_release [{{ ansible_distribution_release }}]
 
-         freebsd_install_method [ {{ freebsd_install_method }} ]
-         freebsd_use_packages [ {{ freebsd_use_packages }} ]
-         freebsd_install_retries [ {{ freebsd_install_retries }} ]
-         freebsd_install_delay [ {{ freebsd_install_delay }} ]
-         freebsd_ports_dryrun [ {{ freebsd_ports_dryrun }} ]
-         freebsd_ports_arch_auto [ {{ freebsd_ports_arch_auto }} ]
-         freebsd_ports_portsnap_cron_enable [ {{ freebsd_ports_portsnap_cron_enable }} ]
-         freebsd_ports_portsnap_cron_user [ {{ freebsd_ports_portsnap_cron_user }} ]
-         freebsd_ports_portsnap_cron_mailto [ {{ freebsd_ports_portsnap_cron_mailto }} ]
-         freebsd_ports_portsnap_cron_hour [ {{ freebsd_ports_portsnap_cron_hour }} ]
-         freebsd_ports_portsnap_cron_minute [ {{ freebsd_ports_portsnap_cron_minute }} ]
-         freebsd_ports_portsnap_cron_command [ {{ freebsd_ports_portsnap_cron_command }} ]
+         freebsd_install_method [{{ freebsd_install_method }}]
+         freebsd_use_packages [{{ freebsd_use_packages }}]
+         freebsd_install_retries [{{ freebsd_install_retries }}]
+         freebsd_install_delay [{{ freebsd_install_delay }}]
+         freebsd_ports_dryrun [{{ freebsd_ports_dryrun }}]
+         freebsd_ports_arch_auto [{{ freebsd_ports_arch_auto }}]
+         freebsd_ports_portsnap_cron_enable [{{ freebsd_ports_portsnap_cron_enable }}]
+         freebsd_ports_portsnap_cron_user [{{ freebsd_ports_portsnap_cron_user }}]
+         freebsd_ports_portsnap_cron_mailto [{{ freebsd_ports_portsnap_cron_mailto }}]
+         freebsd_ports_portsnap_cron_hour [{{ freebsd_ports_portsnap_cron_hour }}]
+         freebsd_ports_portsnap_cron_minute [{{ freebsd_ports_portsnap_cron_minute }}]
+         freebsd_ports_portsnap_cron_command [{{ freebsd_ports_portsnap_cron_command }}]
          pkg_list
-         {{ pkg_list | to_nice_yaml }}
+         {{ pkg_list|to_nice_yaml }}
          pkg_list_deinstall
-         {{ pkg_list_deinstall | to_nice_yaml }}
+         {{ pkg_list_deinstall|to_nice_yaml }}
          pkg_dict
-         {{ pkg_dict | to_yaml }}
+         {{ pkg_dict|to_yaml }}
   debug:
     msg: "{{ msg.split('\n') }}"
 
