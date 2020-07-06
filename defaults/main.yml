@@ -2,7 +2,7 @@
 # defaults for freebsd-ports
 
 freebsd_install_method: "ports"
-freebsd_use_packages: "yes"
+freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
@@ -16,6 +16,7 @@ pkg_dict: []
 
 # portsnap cron
 freebsd_ports_portsnap_cron_enable: false
+freebsd_ports_portsnap_cron_backup: true
 freebsd_ports_portsnap_cron_user: "root"
 freebsd_ports_portsnap_cron_mailto: "root"
 freebsd_ports_portsnap_cron_hour: "*/6"

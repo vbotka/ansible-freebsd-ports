@@ -13,6 +13,7 @@
     hour: "{{ freebsd_ports_portsnap_cron_hour }}"
     job: "{{ freebsd_ports_portsnap_cron_command }}"
     user: "{{ freebsd_ports_portsnap_cron_user }}"
+    backup: "{{ freebsd_ports_portsnap_cron_backup }}"
 
 # EOF
 ...

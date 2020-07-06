@@ -17,6 +17,7 @@
          freebsd_ports_dryrun [{{ freebsd_ports_dryrun }}]
          freebsd_ports_arch_auto [{{ freebsd_ports_arch_auto }}]
          freebsd_ports_portsnap_cron_enable [{{ freebsd_ports_portsnap_cron_enable }}]
+         freebsd_ports_portsnap_cron_backup [{{ freebsd_ports_portsnap_cron_backup }}]
          freebsd_ports_portsnap_cron_user [{{ freebsd_ports_portsnap_cron_user }}]
          freebsd_ports_portsnap_cron_mailto [{{ freebsd_ports_portsnap_cron_mailto }}]
          freebsd_ports_portsnap_cron_hour [{{ freebsd_ports_portsnap_cron_hour }}]
