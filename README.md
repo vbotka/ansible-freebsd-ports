@@ -11,7 +11,9 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-None.
+### Collections
+
+- community.general
 
 
 ## Role Variables
@@ -27,17 +29,20 @@ Review the defaults end examples in vars.
 shell> ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install role
+2) Install the role and collections
 
 ```
-shell> ansible-galaxy install vbotka.freebsd_ports
+shell> ansible-galaxy role install vbotka.freebsd_ports
+shell> ansible-galaxy collections install community.general
 ```
 
-3) Fit variables
+3) Fit variables, e.g. vars/main.yml
 
 ```
 shell> editor vbotka.freebsd_ports/vars/main.yml
 ```
+
+Set "freebsd_install_method=ports"
 
 4) Create playbook
 
@@ -49,7 +54,27 @@ shell> cat freebsd-ports.yml
     - vbotka.freebsd_ports
 ```
 
-5) Configure the system
+5) Manage the ports
+
+Check syntax
+
+```
+shell> ansible-playbook freebsd-ports.yml --syntax-check
+```
+
+Display variables
+
+```
+shell> ansible-playbook freebsd-ports.yml -e ports_debug=true -t ports_debug
+```
+
+Dry-run the playbook and display changes
+
+```
+shell> ansible-playbook freebsd-ports.yml --check --diff
+```
+
+Manage the packages if all seems to be right
 
 ```
 shell> ansible-playbook freebsd-ports.yml

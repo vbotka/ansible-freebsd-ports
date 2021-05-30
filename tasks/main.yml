@@ -1,20 +1,20 @@
 ---
-# tasks for freebsd-ports
+# tasks for freebsd_ports
 
 - import_tasks: vars.yml
-  tags: [freebsd_ports_vars, always]
+  tags: [ports_vars, always]
 
 - import_tasks: debug.yml
-  when: freebsd_ports_debug|bool
-  tags: [freebsd_ports_debug, always]
+  when: ports_debug|bool
+  tags: [ports_debug, always]
 
 - import_tasks: ports.yml
   when: freebsd_install_method|lower == "ports"
-  tags: freebsd_ports_install
+  tags: ports_install
 
 - import_tasks: cron.yml
-  when: freebsd_ports_portsnap_cron_enable|bool
-  tags: freebsd_ports_cron
+  when: ports_portsnap_cron_enable|bool
+  tags: ports_cron
 
 # EOF
 ...

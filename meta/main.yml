@@ -16,4 +16,6 @@ galaxy_info:
     - freebsd
     - ports
 dependencies: []
+collections:
+  - community.general
 ...

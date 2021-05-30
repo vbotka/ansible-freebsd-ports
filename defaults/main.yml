@@ -1,27 +1,30 @@
 ---
-# defaults for freebsd-ports
+# defaults for freebsd_ports
 
-freebsd_install_method: "ports"
+# Install params
+freebsd_install_method: ports
 freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
 
-freebsd_ports_debug: false
-freebsd_ports_dryrun: false
-freebsd_ports_arch_auto: false
+ports_debug: false
 
-pkg_list: []
-pkg_list_deinstall: []
-pkg_dict: []
+# See vbotka.freebsd_packages
+#
+# pkg_dict: []
+# pkg_dict_all: false
+# pkg_dict_select: {}
+# pkg_list: []
+# pkg_list_deinstall: []
 
 # portsnap cron
-freebsd_ports_portsnap_cron_enable: false
-freebsd_ports_portsnap_cron_backup: true
-freebsd_ports_portsnap_cron_user: "root"
-freebsd_ports_portsnap_cron_mailto: "root"
-freebsd_ports_portsnap_cron_hour: "*/6"
-freebsd_ports_portsnap_cron_minute: "15"
-freebsd_ports_portsnap_cron_command: "/usr/sbin/portsnap cron"
+ports_portsnap_cron_enable: false
+ports_portsnap_cron_backup: true
+ports_portsnap_cron_user: root
+ports_portsnap_cron_mailto: root
+ports_portsnap_cron_hour: "*/6"
+ports_portsnap_cron_minute: "15"
+ports_portsnap_cron_command: /usr/sbin/portsnap cron
 
 # EOF
 ...
