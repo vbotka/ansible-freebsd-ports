@@ -1,43 +1,98 @@
 ---
 
-- name: "ports: Debug list ports from a dictionary"
-  debug:
-    msg: "{{ item.1 }}"
-  loop: "{{ pkg_dict|subelements('packages') }}"
-  when: freebsd_ports_debug|bool
+# INSTALL
 
-- name: "ports: Install ports from a dictionary"
-  portinstall:
-    name: "{{ item.1 }}"
-    use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ pkg_dict|subelements('packages') }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
-  when: not freebsd_ports_dryrun|bool
+- name: "ports: Install individually from all lists in pkg_dict"
+  block:
+    - name: "ports: Debug individually from all lists in pkg_dict"
+      ansible.builtin.debug:
+        msg: "{{ item.0.pkglist }}: {{ item.1 }}"
+      loop: "{{ query('subelements', pkg_dict, 'packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+      when: ports_debug|bool
+    - name: "ports: Install individually from all lists in pkg_dict"
+      community.general.portinstall:
+        name: "{{ item.1 }}"
+        use_packages: "{{ freebsd_use_packages }}"
+      loop: "{{ query('subelements', pkg_dict, 'packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+      when: not ports_dryrun|bool
+    - name: "ports: Debug result"
+      ansible.builtin.debug:
+        var: result
+      when: ports_debug|bool
+  when: pkg_dict_all|d(false)|bool
 
-- name: "ports: Install ports from a list"
-  portinstall:
-    name: "{{ item }}"
-    use_packages: "{{ freebsd_use_packages }}"
-  loop: "{{ pkg_list }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
-  when: not freebsd_ports_dryrun|bool
+- name: "ports: Install selected lists"
+  block:
+    - name: "ports: Install selected lists from pkg_dict"
+      community.general.portinstall:
+        name: "{{ item.1 }}"
+        use_packages: "{{ freebsd_use_packages }}"
+      loop: "{{ query('subelements', pkg_dict, 'packages') }}"
+      loop_control:
+        label: "{{ item.0.pkglist }}: {{ item.1 }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+      when:
+        - not ports_dryrun|bool
+        - item.0.pkglist in pkg_dict_select
+    - name: "ports: Debug result"
+      ansible.builtin.debug:
+        var: result
+      when: ports_debug|bool
+  when: pkg_dict_select|length > 0
 
-- name: "ports: Deinstall ports from a list"
-  portinstall:
-    state: absent
-    name: "{{ item }}"
-  loop: "{{ pkg_list_deinstall }}"
-  register: result
-  retries: "{{ freebsd_install_retries }}"
-  until: result is succeeded
-  delay: "{{ freebsd_install_delay }}"
-  when: not freebsd_ports_dryrun|bool
+- name: "ports: Install individually from list pkg_list"
+  block:
+    - name: "ports: Debug individually from list pkg_list"
+      ansible.builtin.debug:
+        var: item
+      loop: "{{ pkg_list }}"
+      when: ports_debug|bool
+    - name: "ports: Install individually from list pkg_list"
+      community.general.portinstall:
+        name: "{{ item }}"
+        use_packages: "{{ freebsd_use_packages }}"
+      loop: "{{ pkg_list }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+      when: not ports_dryrun|bool
+    - name: "ports: Debug result"
+      ansible.builtin.debug:
+        var: result
+      when: ports_debug|bool
+  when: pkg_list|length > 0
+
+# DEINSTALL
+
+- name: "ports: Deinstall single list"
+  block:
+    - name: "ports: Deinstall ports from a list"
+      community.general.portinstall:
+        state: absent
+        name: "{{ item }}"
+      loop: "{{ pkg_list_deinstall }}"
+      register: result
+      retries: "{{ freebsd_install_retries }}"
+      until: result is succeeded
+      delay: "{{ freebsd_install_delay }}"
+      when: not ports_dryrun|bool
+    - name: "ports: Debug result"
+      ansible.builtin.debug:
+        var: result
+      when: ports_debug|bool
+  when: pkg_list_deinstall|length > 0
 
 # EOF
 ...

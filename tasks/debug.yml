@@ -1,8 +1,8 @@
 ---
 
-- name: "Debug FreeBSD ports"
+- name: Debug
   vars:
-    msg: |
+    msg: |-
          ansible_architecture [{{ ansible_architecture }}]
          ansible_os_family [{{ ansible_os_family }}]
          ansible_distribution [{{ ansible_distribution }}]
@@ -14,22 +14,28 @@
          freebsd_use_packages [{{ freebsd_use_packages }}]
          freebsd_install_retries [{{ freebsd_install_retries }}]
          freebsd_install_delay [{{ freebsd_install_delay }}]
-         freebsd_ports_dryrun [{{ freebsd_ports_dryrun }}]
-         freebsd_ports_arch_auto [{{ freebsd_ports_arch_auto }}]
-         freebsd_ports_portsnap_cron_enable [{{ freebsd_ports_portsnap_cron_enable }}]
-         freebsd_ports_portsnap_cron_backup [{{ freebsd_ports_portsnap_cron_backup }}]
-         freebsd_ports_portsnap_cron_user [{{ freebsd_ports_portsnap_cron_user }}]
-         freebsd_ports_portsnap_cron_mailto [{{ freebsd_ports_portsnap_cron_mailto }}]
-         freebsd_ports_portsnap_cron_hour [{{ freebsd_ports_portsnap_cron_hour }}]
-         freebsd_ports_portsnap_cron_minute [{{ freebsd_ports_portsnap_cron_minute }}]
-         freebsd_ports_portsnap_cron_command [{{ freebsd_ports_portsnap_cron_command }}]
-         pkg_list
-         {{ pkg_list|to_nice_yaml }}
-         pkg_list_deinstall
-         {{ pkg_list_deinstall|to_nice_yaml }}
+
+         ports_dryrun [{{ ports_dryrun }}]
+
+         ports_portsnap_cron_enable [{{ ports_portsnap_cron_enable }}]
+         ports_portsnap_cron_backup [{{ ports_portsnap_cron_backup }}]
+         ports_portsnap_cron_user [{{ ports_portsnap_cron_user }}]
+         ports_portsnap_cron_mailto [{{ ports_portsnap_cron_mailto }}]
+         ports_portsnap_cron_hour [{{ ports_portsnap_cron_hour }}]
+         ports_portsnap_cron_minute [{{ ports_portsnap_cron_minute }}]
+         ports_portsnap_cron_command [{{ ports_portsnap_cron_command }}]
+
          pkg_dict
-         {{ pkg_dict|to_yaml }}
-  debug:
+         {{ pkg_dict|to_nice_yaml }}
+         pkg_list
+         {{ pkg_list|to_yaml }}
+         pkg_list_deinstall
+         {{ pkg_list_deinstall|to_yaml }}
+         pkg_dict_all [{{ pkg_dict_all|d(false) }}]
+         pkg_dict_select
+         {{ pkg_dict_select|to_yaml }}
+
+  ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
 
 # EOF

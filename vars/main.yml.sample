@@ -1,5 +1,14 @@
 ---
-# vars for freebsd-ports
+# vars for freebsd_ports
+
+# freebsd_install_method: ports
+# ports_debug: false
+# ports_dryrun: false
+# ports_portsnap_cron_enable: true
+
+# pkg_dict_all: false
+# pkg_dict_select:
+#   - minimal
 
 # EOF
 ...
