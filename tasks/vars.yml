@@ -30,7 +30,7 @@
     pkg_dict: "{{ pkg_dict|sort(attribute='pkglist') }}"
     pkg_list: "{{ pkg_list|unique|sort }}"
     pkg_list_deinstall: "{{ pkg_list_deinstall|d([])|unique|sort }}"
-    pkg_dict_select: "{{ pkg_dict_select|d({}) }}"
+    pkg_dict_select: "{{ pkg_dict_select|d([])|unique|sort }}"
 
 # EOF
 ...

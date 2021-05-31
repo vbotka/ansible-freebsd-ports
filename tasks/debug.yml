@@ -15,6 +15,8 @@
          freebsd_install_retries [{{ freebsd_install_retries }}]
          freebsd_install_delay [{{ freebsd_install_delay }}]
 
+         ports_dryrun [{{ ports_dryrun }}]
+
          ports_portsnap_cron_enable [{{ ports_portsnap_cron_enable }}]
          ports_portsnap_cron_backup [{{ ports_portsnap_cron_backup }}]
          ports_portsnap_cron_user [{{ ports_portsnap_cron_user }}]
@@ -31,7 +33,7 @@
          {{ pkg_list_deinstall|to_yaml }}
          pkg_dict_all [{{ pkg_dict_all|d(false) }}]
          pkg_dict_select
-         {{ pkg_dict_select|d({})|to_nice_yaml }}
+         {{ pkg_dict_select|to_yaml }}
 
   ansible.builtin.debug:
     msg: "{{ msg.split('\n') }}"
