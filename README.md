@@ -18,7 +18,7 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Role Variables
 
-Review the defaults end examples in vars.
+See the defaults end examples in vars.
 
 
 ## Workflow

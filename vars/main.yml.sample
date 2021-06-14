@@ -1,5 +1,5 @@
 ---
-# vars for freebsd_ports
+# vars samples for freebsd_ports
 
 # freebsd_install_method: ports
 # ports_debug: false
