@@ -1,18 +1,22 @@
 ---
 # tasks for freebsd_ports
 
-- import_tasks: vars.yml
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
   tags: [ports_vars, always]
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: ports_debug|bool
   tags: [ports_debug, always]
 
-- import_tasks: ports.yml
+- name: Import ports.yml
+  ansible.builtin.import_tasks: ports.yml
   when: freebsd_install_method|lower == "ports"
   tags: ports_install
 
-- import_tasks: cron.yml
+- name: Import cron.yml
+  ansible.builtin.import_tasks: cron.yml
   when: ports_portsnap_cron_enable|bool
   tags: ports_cron
 
