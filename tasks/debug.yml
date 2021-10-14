@@ -36,7 +36,7 @@
          {{ pkg_dict_select|to_yaml }}
 
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
 
 # EOF
 ...

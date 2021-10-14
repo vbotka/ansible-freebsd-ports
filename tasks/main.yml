@@ -8,7 +8,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: ports_debug|bool
-  tags: [ports_debug, always]
+  tags: ports_debug
 
 - name: Import ports.yml
   ansible.builtin.import_tasks: ports.yml

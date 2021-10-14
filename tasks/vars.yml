@@ -17,7 +17,7 @@
       {{ lookup('vars', 'pkg_dict_' + ansible_architecture)|d([])|
          sort(attribute='pkglist')|to_nice_yaml }}
   ansible.builtin.debug:
-    msg: "{{ msg.split('\n') }}"
+    msg: "{{ '{}'.format(msg) }}"
   when: ports_debug|bool
 
 - name: "vars: Select the list of dictionaries for {{ ansible_architecture }}"
