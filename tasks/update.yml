@@ -1,0 +1,28 @@
+---
+
+- block:
+
+    - name: "update: Update ports (this may take a while)"
+      ansible.builtin.command: portsnap update
+      register: ports_updated_out
+      changed_when: false
+
+    - name: "stat: Debug update ports"
+      ansible.builtin.debug:
+        var: ports_updated_out
+      when: ports_debug|bool
+
+  rescue:
+
+    - name: "stat: rescue: Debug"
+      ansible.builtin.debug:
+        msg: |
+          [ERR] Update ports failed:
+          {{ ansible_failed_result }}
+          End host.
+
+    - name: "stat: rescue: End host"
+      meta: end_host
+
+# EOF
+...

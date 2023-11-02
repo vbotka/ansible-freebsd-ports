@@ -17,6 +17,15 @@
       freebsd_use_packages: {{ freebsd_use_packages }}
 
       ports_dryrun: {{ ports_dryrun }}
+      ports_update: {{ ports_update }}
+
+      ports_portsnap_index: {{ ports_portsnap_index }}
+      ports_portsnap_conf_file: {{ ports_portsnap_conf_file }}
+      ports_portsnap_workdir: {{ ports_portsnap_workdir }}
+      ports_portsnap_portsdir: {{ ports_portsnap_portsdir }}
+      ports_portsnap_servername: {{ ports_portsnap_servername }}
+      ports_portsnap_conf:
+        {{ ports_portsnap_conf|to_yaml(indent=2)|indent(2) }}
       ports_portsnap_cron_enable: {{ ports_portsnap_cron_enable }}
       ports_portsnap_cron_user: {{ ports_portsnap_cron_user|d('UNDEFINED') }}
       ports_portsnap_cron_mailto: {{ ports_portsnap_cron_mailto|d('UNDEFINED') }}

@@ -77,6 +77,12 @@ Dry-run the playbook and display changes
 shell> ansible-playbook freebsd-ports.yml --check --diff
 ```
 
+Optionally, update ports
+
+```
+shell> ansible-playbook freebsd-ports.yml -t ports_update -e ports_update=true
+```
+
 Dry-run the installation of the ports
 
 ```
@@ -88,7 +94,6 @@ Manage the packages if all seems to be right
 ```
 shell> ansible-playbook freebsd-ports.yml
 ```
-
 
 ## References
 

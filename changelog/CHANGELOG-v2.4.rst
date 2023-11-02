@@ -10,22 +10,23 @@ vbotka.freebsd_ports 2.4 Release Notes
 
 Release Summary
 ---------------
-Split tasks ports_install.yml and ports_delete.yml. Simplify
-vars.yml. Add tasks stat.yml.
+Split tasks ports_install.yml and ports_delete.yml. Configure
+portsnap. Update ports. Add tasks stat.yml.
 
 Major Changes
 -------------
-- Split tasks: ports_install.yml and ports_delete.yml
-- Simplified loop arguments in packages_*.yml
-- Simplified set_fact: pkg_*
-- Add support for all parameters of ansible.builtin.cron
+- Configure portsnap.
+- Optionally, update ports.
+- Optionally, create lists of outdated ports ports_outdated.
+- Add variables: ports_stat, ports_outdated_enabled (default=false).
+- Split tasks to ports_install.yml and ports_delete.yml
 - Add tags: ports_install, ports_delete,
   ports_install_*_individually, ports_delete_list_individually
-- README; Add references.
-- vars/main.yml.sample; Add example.
-- Optionally create lists of outdated ports ports_outdated. Add
-  variables: ports_stat, ports_outdated_enabled (default=false).
 
 Minor Changes
 -------------
-- Debug formatting
+- Add support for all parameters of ansible.builtin.cron
+- README; Add references.
+- Update vars/main.yml.sample; Add example.
+- Simplified loop arguments in ports_install.yml
+- Simplified set_fact of pkg_* in vars.yml

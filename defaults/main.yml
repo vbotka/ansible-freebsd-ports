@@ -21,7 +21,18 @@ pkg_dict_all: false
 pkg_dict_select: []
 pkg_list_deinstall: []
 
-# Cron portsnap
+# portsnap conf
+ports_portsnap_index: 13
+ports_portsnap_conf_file: /etc/portsnap.conf
+ports_portsnap_workdir: /var/db/portsnap
+ports_portsnap_portsdir: /usr/ports
+ports_portsnap_servername: portsnap.FreeBSD.org
+ports_portsnap_conf:
+  WORKDIR: "{{ ports_portsnap_workdir }}"
+  PORTSDIR: "{{ ports_portsnap_portsdir }}"
+  SERVERNAME: "{{ ports_portsnap_servername }}"
+
+# portsnap cron
 ports_portsnap_cron_enable: false
 ports_portsnap_cron_user: root
 ports_portsnap_cron_mailto: root
@@ -34,6 +45,9 @@ ports_portsnap_cron_backup: true
 # ports_portsnap_cron_day
 # ports_portsnap_cron_weekday
 # ports_portsnap_cron_special_time
+
+# Update ports
+ports_update: false
 
 # Status
 ports_stat: false

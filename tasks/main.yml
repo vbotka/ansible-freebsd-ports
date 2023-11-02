@@ -10,6 +10,11 @@
   when: ports_debug|bool
   tags: ports_debug
 
+- name: Import update.yml
+  ansible.builtin.import_tasks: update.yml
+  when: ports_update|bool
+  tags: ports_update
+
 - block:
 
     - name: Import ports_delete.yml
