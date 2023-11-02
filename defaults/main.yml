@@ -35,5 +35,13 @@ ports_portsnap_cron_backup: true
 # ports_portsnap_cron_weekday
 # ports_portsnap_cron_special_time
 
+# Status
+ports_stat: false
+ports_outdated_enable: false
+ports_outdated: "{{ dict(ansible_play_hosts|
+                         zip(ansible_play_hosts|
+                             map('extract', hostvars, ['ports_outdated_out', 'stdout_lines'])|
+                             map('map', 'split')|map('map', 'first'))) }}"
+
 # EOF
 ...

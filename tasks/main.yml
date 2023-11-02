@@ -27,5 +27,10 @@
   when: ports_portsnap_cron_enable|bool
   tags: ports_cron
 
+- name: Import stat.yml
+  ansible.builtin.import_tasks: stat.yml
+  when: ports_stat|bool
+  tags: ports_stat
+
 # EOF
 ...
