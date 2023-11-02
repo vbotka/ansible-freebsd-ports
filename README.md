@@ -36,13 +36,16 @@ shell> ansible-galaxy role install vbotka.freebsd_ports
 shell> ansible-galaxy collections install community.general
 ```
 
-3) Fit variables, e.g. vars/main.yml
+3) Fit variables, for example in vars/main.yml
 
 ```
 shell> editor vbotka.freebsd_ports/vars/main.yml
 ```
 
 Set "freebsd_install_method=ports"
+
+See vars/main.yml.sample
+See vbotka.freebsd_postinstall/defaults/main/pkgdict_*.yml
 
 4) Create playbook
 
@@ -101,4 +104,4 @@ shell> ansible-playbook freebsd-ports.yml
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)

@@ -3,9 +3,9 @@
 
 # Install params
 freebsd_install_method: ports
-freebsd_use_packages: true
 freebsd_install_retries: 10
 freebsd_install_delay: 5
+freebsd_use_packages: true
 
 ports_debug: false
 ports_dryrun: false
@@ -17,15 +17,23 @@ ports_dryrun: false
 # pkg_dict: []            # d([]) set in tasks/vars.yml
 # pkg_list: []            # d([]) set in tasks/vars.yml
 # pkg_list_deinstall: []  # d([]) set in tasks/vars.yml
+pkg_dict_all: false
+pkg_dict_select: []
+pkg_list_deinstall: []
 
-# portsnap cron
+# Cron portsnap
 ports_portsnap_cron_enable: false
-ports_portsnap_cron_backup: true
 ports_portsnap_cron_user: root
 ports_portsnap_cron_mailto: root
-ports_portsnap_cron_hour: "*/6"
-ports_portsnap_cron_minute: "15"
+ports_portsnap_cron_name: Fetch a compressed snapshot of the ports tree
 ports_portsnap_cron_command: /usr/sbin/portsnap cron
+ports_portsnap_cron_hour: '*/6'
+ports_portsnap_cron_minute: '15'
+ports_portsnap_cron_backup: true
+# ports_portsnap_cron_month
+# ports_portsnap_cron_day
+# ports_portsnap_cron_weekday
+# ports_portsnap_cron_special_time
 
 # EOF
 ...
