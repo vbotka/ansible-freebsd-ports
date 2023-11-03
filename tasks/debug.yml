@@ -20,24 +20,26 @@
       ports_update: {{ ports_update }}
 
       ports_portsnap_index: {{ ports_portsnap_index }}
+      ports_portsnap_refuse: {{ ports_portsnap_refuse }}
       ports_portsnap_conf_file: {{ ports_portsnap_conf_file }}
       ports_portsnap_workdir: {{ ports_portsnap_workdir }}
       ports_portsnap_portsdir: {{ ports_portsnap_portsdir }}
       ports_portsnap_servername: {{ ports_portsnap_servername }}
       ports_portsnap_conf:
-        {{ ports_portsnap_conf|to_yaml(indent=2)|indent(2) }}
-      ports_portsnap_cron_enable: {{ ports_portsnap_cron_enable }}
-      ports_portsnap_cron_user: {{ ports_portsnap_cron_user|d('UNDEFINED') }}
-      ports_portsnap_cron_mailto: {{ ports_portsnap_cron_mailto|d('UNDEFINED') }}
-      ports_portsnap_cron_name: {{ ports_portsnap_cron_name|d('UNDEFINED') }}
-      ports_portsnap_cron_command: {{ ports_portsnap_cron_command|d('UNDEFINED') }}
-      ports_portsnap_cron_hour: {{ ports_portsnap_cron_hour|d('UNDEFINED') }}
-      ports_portsnap_cron_minute: {{ ports_portsnap_cron_minute|d('UNDEFINED') }}
-      ports_portsnap_cron_backup: {{ ports_portsnap_cron_backup|d('UNDEFINED') }}
-      ports_portsnap_cron_month: {{ ports_portsnap_cron_month|d('UNDEFINED') }}
-      ports_portsnap_cron_day: {{ ports_portsnap_cron_day|d('UNDEFINED') }}
-      ports_portsnap_cron_weekday: {{ ports_portsnap_cron_weekday|d('UNDEFINED') }}
-      ports_portsnap_cron_special_time: {{ ports_portsnap_cron_special_time|d('UNDEFINED') }}
+        {{ ports_portsnap_conf|to_nice_yaml(indent=2)|indent(2) }}
+      ports_cron: {{ ports_cron }}
+      ports_cron_user: {{ ports_cron_user|d('UNDEFINED') }}
+      ports_cron_mailto: {{ ports_cron_mailto|d('UNDEFINED') }}
+      ports_cron_name: {{ ports_cron_name|d('UNDEFINED') }}
+      ports_cron_command: {{ ports_cron_command|d('UNDEFINED') }}
+      ports_cron_hour: {{ ports_cron_hour|d('UNDEFINED') }}
+      ports_cron_minute: {{ ports_cron_minute|d('UNDEFINED') }}
+      ports_cron_backup: {{ ports_cron_backup|d('UNDEFINED') }}
+      ports_cron_month: {{ ports_cron_month|d('UNDEFINED') }}
+      ports_cron_day: {{ ports_cron_day|d('UNDEFINED') }}
+      ports_cron_weekday: {{ ports_cron_weekday|d('UNDEFINED') }}
+      ports_cron_special_time: {{ ports_cron_special_time|d('UNDEFINED') }}
+
       pkg_dict:
         {{ pkg_dict|to_nice_yaml(indent=2)|indent(2) }}
       pkg_list:

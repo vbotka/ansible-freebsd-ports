@@ -14,7 +14,7 @@
 
   rescue:
 
-    - name: "stat: rescue: Debug"
+    - name: "update: rescue: Debug"
       ansible.builtin.debug:
         msg: |
           [ERR] Update ports failed:

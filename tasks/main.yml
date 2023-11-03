@@ -10,6 +10,10 @@
   when: ports_debug|bool
   tags: ports_debug
 
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  tags: ports_conf
+
 - name: Import update.yml
   ansible.builtin.import_tasks: update.yml
   when: ports_update|bool
@@ -29,7 +33,7 @@
 
 - name: Import cron.yml
   ansible.builtin.import_tasks: cron.yml
-  when: ports_portsnap_cron_enable|bool
+  when: ports_cron|bool
   tags: ports_cron
 
 - name: Import stat.yml

@@ -30,3 +30,7 @@ Minor Changes
 - Update vars/main.yml.sample; Add example.
 - Simplified loop arguments in ports_install.yml
 - Simplified set_fact of pkg_* in vars.yml
+
+Breaking Changes
+----------------
+- Rename variables ports_portsnap_cron_* to ports_cron_*
