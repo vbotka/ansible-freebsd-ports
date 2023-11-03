@@ -10,15 +10,36 @@
   when: ports_debug|bool
   tags: ports_debug
 
-- name: Import ports.yml
-  ansible.builtin.import_tasks: ports.yml
-  when: freebsd_install_method|lower == "ports"
-  tags: ports_install
+- name: Import conf.yml
+  ansible.builtin.import_tasks: conf.yml
+  tags: ports_conf
+
+- name: Import update.yml
+  ansible.builtin.import_tasks: update.yml
+  when: ports_update|bool
+  tags: ports_update
+
+- block:
+
+    - name: Import ports_delete.yml
+      ansible.builtin.import_tasks: ports_delete.yml
+      tags: ports_delete
+
+    - name: Import ports_install.yml
+      ansible.builtin.import_tasks: ports_install.yml
+      tags: ports_install
+
+  when: freebsd_install_method|lower == 'ports'
 
 - name: Import cron.yml
   ansible.builtin.import_tasks: cron.yml
-  when: ports_portsnap_cron_enable|bool
+  when: ports_cron|bool
   tags: ports_cron
+
+- name: Import stat.yml
+  ansible.builtin.import_tasks: stat.yml
+  when: ports_stat|bool
+  tags: ports_stat
 
 # EOF
 ...

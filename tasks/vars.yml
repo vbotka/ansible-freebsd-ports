@@ -1,36 +1,30 @@
 ---
 
+- name: "vars: Set the lists for {{ ansible_architecture }}"
+  ansible.builtin.set_fact:
+    pkg_dict: "{{ pkg_dict|d([]) +
+                  lookup('vars', 'pkg_dict_' ~ ansible_architecture, default=[])|
+                  sort(attribute='pkglist') }}"
+    pkg_list: "{{ pkg_list|d([]) +
+                  lookup('vars', 'pkg_list_' ~ ansible_architecture, default=[])|
+                  unique|sort }}"
+    pkg_list_deinstall: "{{ pkg_list_deinstall|unique|sort }}"
+    pkg_dict_select: "{{ pkg_dict_select|unique|sort }}"
+
 - name: "vars: Debug for {{ ansible_architecture }}"
   vars:
     msg: |-
-      pkg_list
-      {{ pkg_list|d([])|sort|to_nice_yaml }}
-      pkg_dict
-      {{ pkg_dict|d([])|sort(attribute='pkglist')|to_nice_yaml }}
-      pkg_dict_select
-      {{ pkg_dict_select|d({})|to_nice_yaml }}
-
-      pkg_list {{ ansible_architecture }}
-      {{ lookup('vars', 'pkg_list_' + ansible_architecture)|d([])|
-         sort|to_nice_yaml }}
-      pkg_dict {{ ansible_architecture }}
-      {{ lookup('vars', 'pkg_dict_' + ansible_architecture)|d([])|
-         sort(attribute='pkglist')|to_nice_yaml }}
+      pkg_dict:
+        {{ pkg_dict|sort(attribute='pkglist')|to_nice_yaml(indent=2)|indent(2) }}
+      pkg_list:
+        {{ pkg_list|sort|to_nice_yaml(indent=2)|indent(2) }}
+      pkg_list_deinstall:
+        {{ pkg_list_deinstall|to_nice_yaml(indent=2)|indent(2) }}
+      pkg_dict_select:
+        {{ pkg_dict_select|to_nice_yaml(indent=2)|indent(2) }}
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
   when: ports_debug|bool
-
-- name: "vars: Select the list of dictionaries for {{ ansible_architecture }}"
-  ansible.builtin.set_fact:
-    pkg_dict: "{{ pkg_dict|d([]) + lookup('vars', 'pkg_dict_' ~ ansible_architecture)|d([]) }}"
-    pkg_list: "{{ pkg_list|d([]) + lookup('vars', 'pkg_list_' ~ ansible_architecture)|d([]) }}"
-
-- name: "vars: Default emply, flatten, unique, and sort packages"
-  ansible.builtin.set_fact:
-    pkg_dict: "{{ pkg_dict|sort(attribute='pkglist') }}"
-    pkg_list: "{{ pkg_list|unique|sort }}"
-    pkg_list_deinstall: "{{ pkg_list_deinstall|d([])|unique|sort }}"
-    pkg_dict_select: "{{ pkg_dict_select|d([])|unique|sort }}"
 
 # EOF
 ...
