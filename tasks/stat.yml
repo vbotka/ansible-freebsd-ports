@@ -1,8 +1,8 @@
 ---
-- when: ports_outdated_enable|d(bool)
-
-  # EOF
+- name: Get outdated ports
+  when: ports_outdated_enable | bool
   block:
+
     - name: "Stat: Get outdated ports (this may take a while)"
       ansible.builtin.command: pkg version -l "<"
       register: ports_outdated_out
@@ -11,10 +11,11 @@
     - name: "Stat: Debug outdated ports"
       ansible.builtin.debug:
         var: ports_outdated
-      when: ports_debug|bool
+      when: ports_debug | bool
       run_once: true
 
   rescue:
+
     - name: "Stat: rescue: Debug"
       ansible.builtin.debug:
         msg: |
@@ -24,3 +25,5 @@
 
     - name: "Stat: rescue: End host"
       ansible.builtin.meta: end_host
+
+# EOF

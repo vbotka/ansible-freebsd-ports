@@ -1,5 +1,7 @@
 ---
-- block:
+- name: Update ports
+  block:
+
     - name: "Update: Update ports (this may take a while)"
       ansible.builtin.command: portsnap update
       register: ports_updated_out
@@ -8,7 +10,7 @@
     - name: "Stat: Debug update ports"
       ansible.builtin.debug:
         var: ports_updated_out
-      when: ports_debug|bool
+      when: ports_debug | bool
 
   rescue:
     - name: "Update: rescue: Debug"
@@ -20,3 +22,5 @@
 
     - name: "Stat: rescue: End host"
       ansible.builtin.meta: end_host
+
+# EOF

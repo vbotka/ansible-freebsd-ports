@@ -50,7 +50,10 @@ ports_cron_backup: true
 # Status
 ports_stat: false
 ports_outdated_enable: false
-ports_outdated: "{{ dict(ansible_play_hosts| zip(ansible_play_hosts| map('extract', hostvars, ['ports_outdated_out', 'stdout_lines'])| map('map', 'split')|map('map',
-  'first'))) }}"
+ports_outdated: "{{ dict(ansible_play_hosts |
+                         zip(ansible_play_hosts |
+                             map('extract', hostvars, ['ports_outdated_out', 'stdout_lines']) |
+                             map('map', 'split') |
+                             map('map', 'first'))) }}"
 
 # EOF
