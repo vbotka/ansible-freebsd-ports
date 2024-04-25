@@ -8,7 +8,7 @@
       register: ports_outdated_out
       changed_when: false
 
-    - name: "Stat: Debug outdated ports"
+    - name: "Stat: Debug outdated ports ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: ports_outdated
       when: ports_debug | bool

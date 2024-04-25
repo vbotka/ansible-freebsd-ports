@@ -4,7 +4,7 @@
     name: MAILTO
     value: "{{ ports_cron_mailto }}"
     user: "{{ ports_cron_user }}"
-  when: ports_cron_mailto|length > 0
+  when: ports_cron_mailto | length > 0
 
 - name: "Cron: Configure cron to fetch a compressed snapshot of the ports tree"
   ansible.builtin.cron:

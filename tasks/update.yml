@@ -7,7 +7,7 @@
       register: ports_updated_out
       changed_when: false
 
-    - name: "Stat: Debug update ports"
+    - name: "Stat: Debug update ports ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: ports_updated_out
       when: ports_debug | bool

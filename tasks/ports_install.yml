@@ -4,7 +4,7 @@
   tags: ports_install_all_indivindually
   block:
 
-    - name: "Ports_install: Debug individually from all lists in pkg_dict"
+    - name: "Ports_install: Debug individually from all lists in pkg_dict ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         msg: "{{ item.0.pkglist }}: {{ item.1 }}"
       loop: "{{ pkg_dict | subelements('packages') }}"
@@ -25,7 +25,7 @@
       delay: "{{ freebsd_install_delay }}"
       when: not ports_dryrun | bool
 
-    - name: "Ports_install: Debug result"
+    - name: "Ports_install: Debug result ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: result
       when: ports_debug | bool
@@ -35,7 +35,7 @@
   tags: ports_install_selected_indivindually
   block:
 
-    - name: "Ports_install: Debug individually from selected lists in pkg_dict"
+    - name: "Ports_install: Debug individually from selected lists in pkg_dict ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         msg: "{{ item.0.pkglist }}: {{ item.1 }}"
       loop: "{{ pkg_dict | selectattr('pkglist', 'in', pkg_dict_select) | subelements('packages') }}"
@@ -56,7 +56,7 @@
       delay: "{{ freebsd_install_delay }}"
       when: not ports_dryrun | bool
 
-    - name: "Ports_install: Debug result"
+    - name: "Ports_install: Debug result ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: result
       when: ports_debug | bool
@@ -83,7 +83,7 @@
       delay: "{{ freebsd_install_delay }}"
       when: not ports_dryrun | bool
 
-    - name: "Ports_install: Debug result"
+    - name: "Ports_install: Debug result ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: result
       when: ports_debug | bool

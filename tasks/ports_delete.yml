@@ -1,15 +1,15 @@
 ---
 - name: "Ports_delete: Deinstall individually from list pkg_list_deinstall"
-  when: pkg_list_deinstall|length > 0
+  when: pkg_list_deinstall | length > 0
   tags: ports_delete_list_indivindually
 
   # EOF
   block:
-    - name: "Ports_delete: Debug individually from list pkg_list_deinstall"
+    - name: "Ports_delete: Debug individually from list pkg_list_deinstall ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         msg: "{{ item }}"
       loop: "{{ pkg_list_deinstall }}"
-      when: ports_debug|bool
+      when: ports_debug | bool
 
     - name: "Ports_delete: Deinstall individually from list pkg_list_deinstall"
       community.general.portinstall:
@@ -20,9 +20,9 @@
       retries: "{{ freebsd_install_retries }}"
       until: result is succeeded
       delay: "{{ freebsd_install_delay }}"
-      when: not ports_dryrun|bool
+      when: not ports_dryrun | bool
 
-    - name: "Ports_delete: Debug result"
+    - name: "Ports_delete: Debug result ports_debug={{ ports_debug }}"
       ansible.builtin.debug:
         var: result
-      when: ports_debug|bool
+      when: ports_debug | bool
