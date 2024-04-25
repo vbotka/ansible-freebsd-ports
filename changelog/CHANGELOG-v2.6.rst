@@ -15,6 +15,8 @@ Ansible 2.16 update
 Major Changes
 -------------
 * Supported FreeBSD 13.3 and 14.0
+* Add tasts/sanity.yml, add variable ports_sanity (default=true).
+* Add variable ports_config (default false).
 
 Minor Changes
 -------------
@@ -27,3 +29,4 @@ Bugfixes
 
 Breaking Changes / Porting Guide
 --------------------------------
+* By default, portsnap will not be configured (ports_config=false).

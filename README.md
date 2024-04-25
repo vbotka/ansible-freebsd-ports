@@ -40,18 +40,13 @@ Install the collection if necessary
 shell> ansible-galaxy collections install community.general
 ```
 
-3) Fit variables, for example, in vars/main.yml
+3) Fit variables
 
-```bash
-shell> editor vbotka.freebsd_ports/vars/main.yml
-```
+* Set "freebsd_install_method=ports"
 
-Set "freebsd_install_method=ports"
-
-Optionally, get the dictionaries of packages' lists. See:
-
-* [vbotka.freebsd_packages/contrib/vars/pkgdict_*.yml](https://github.com/vbotka/ansible-freebsd-packages/tree/master/contrib/vars)
-* [vbotka.freebsd_postinstall/defaults/main/pkgdict_*.yml](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main)
+* Optionally, get the dictionaries of packages' lists. See:
+  * [vbotka.freebsd_packages/contrib/vars/pkgdict_*.yml](https://github.com/vbotka/ansible-freebsd-packages/tree/master/contrib/vars)
+  * [vbotka.freebsd_postinstall/defaults/main/pkgdict_*.yml](https://github.com/vbotka/ansible-freebsd-postinstall/tree/master/defaults/main)
 
 Put them, for example, into the *group_vars/all*
 
@@ -62,6 +57,12 @@ pkgdict_arm64.yml
 pkgdict_arm.yml
 pkgdict_i386.yml
 pkgdict_versions.yml
+```
+
+* If you update *ports-mgmt/portsnap* change configuration file to */usr/local/etc/portsnap.conf*. The default is */etc/portsnap.conf*
+
+```yaml
+ports_portsnap_conf_file: /usr/local/etc/portsnap.conf
 ```
 
 4) Create playbook

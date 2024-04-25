@@ -10,8 +10,14 @@
   when: ports_debug | bool
   tags: ports_debug
 
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: ports_sanity | bool
+  tags: ports_sanity
+
 - name: Import config.yml
   ansible.builtin.import_tasks: config.yml
+  when: ports_config | bool
   tags: ports_config
 
 - name: Import update.yml

@@ -15,6 +15,9 @@
       freebsd_install_delay: {{ freebsd_install_delay }}
       freebsd_use_packages: {{ freebsd_use_packages }}
 
+      ports_backup_conf: {{ ports_backup_conf }}
+      ports_sanity: {{ ports_sanity }}
+      ports_config: {{ ports_config }}
       ports_dryrun: {{ ports_dryrun }}
       ports_update: {{ ports_update }}
 
