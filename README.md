@@ -1,6 +1,6 @@
 # freebsd_ports
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_ports)[![Build Status](https://travis-ci.org/vbotka/ansible-freebsd-ports.svg?branch=master)](https://travis-ci.org/vbotka/ansible-freebsd-ports)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_ports)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-ports.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-ports)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-ports)](https://github.com/vbotka/ansible-freebsd-ports/tags)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_ports/) FreeBSD. Install and update ports.
 
@@ -23,22 +23,26 @@ See the defaults end examples in vars.
 
 ## Workflow
 
-1) Change shell to /bin/sh
+1) Change shell on the remote host to /bin/sh if necessary
 
-```
+```bash
 shell> ansible host -e 'ansible_shell_type=csh ansible_shell_executable=/bin/csh' -a 'sudo pw usermod user -s /bin/sh'
 ```
 
-2) Install the role and collections
+2) Install the role and collection
 
-```
+```bash
 shell> ansible-galaxy role install vbotka.freebsd_ports
+```
+Install the collection if necessary
+
+```bash
 shell> ansible-galaxy collections install community.general
 ```
 
-3) Fit variables, for example in vars/main.yml
+3) Fit variables, for example, in vars/main.yml
 
-```
+```bash
 shell> editor vbotka.freebsd_ports/vars/main.yml
 ```
 
@@ -49,7 +53,7 @@ See vbotka.freebsd_postinstall/defaults/main/pkgdict_*.yml
 
 4) Create playbook
 
-```
+```bash
 shell> cat freebsd-ports.yml
 
 - hosts: srv.example.com
@@ -61,44 +65,54 @@ shell> cat freebsd-ports.yml
 
 Check syntax
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml --syntax-check
 ```
 
 Display variables
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml -e ports_debug=true -t ports_debug
 ```
 
 Dry-run the playbook and display changes
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml --check --diff
 ```
 
 Optionally, update ports
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml -t ports_update -e ports_update=true
 ```
 
 Dry-run the installation of the ports
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml -e ports_dryrun=true
 ```
 
-Manage the packages if all seems to be right
+If all seems to be right manage the packages
 
-```
+```bash
 shell> ansible-playbook freebsd-ports.yml
 ```
 
+
+## Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running *ansible-lint*. Some rules might be disabled and some warnings might be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
+
+
 ## References
 
-- [FreeBSD handbook: 4.5. Using the Ports Collection](https://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/ports-using.html)
-- [FreeBSD handbook: 4.6. Building Packages with Poudriere](https://www.freebsd.org/doc/handbook/ports-poudriere.html)
+- [FreeBSD handbook: Using the Ports Collection](https://docs.freebsd.org/en/books/handbook/ports/#ports-using)
+- [FreeBSD handbook: Building Packages with Poudriere](https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere)
 - [poudriere](https://github.com/freebsd/poudriere/wiki)
 
 
