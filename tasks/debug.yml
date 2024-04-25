@@ -20,6 +20,8 @@
       ports_config: {{ ports_config }}
       ports_dryrun: {{ ports_dryrun }}
       ports_update: {{ ports_update }}
+      ports_stat: {{ ports_stat }}
+      ports_outdated_enable: {{ ports_outdated_enable }}
 
       ports_portsnap_index: {{ ports_portsnap_index }}
       ports_portsnap_refuse: {{ ports_portsnap_refuse }}
@@ -51,8 +53,6 @@
       pkg_dict_all: {{ pkg_dict_all }}
       pkg_dict_select:
         {{ pkg_dict_select | to_nice_yaml(indent=2) | indent(2) }}
-      ports_stat: {{ ports_stat }}
-      ports_outdated_enable: {{ ports_outdated_enable }}
 
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
