@@ -1,0 +1,35 @@
+---
+- name: "Config: Configure {{ ports_portsnap_conf_file }}"
+  ansible.builtin.lineinfile:
+    path: "{{ ports_portsnap_conf_file }}"
+    insertafter: ^#\s*{{ item.key }}\s*=\s*(.*)$
+    regexp: ^\s*{{ item.key }}\s*=\s*(.*)$
+    line: "{{ item.key }}={{ item.value }}"
+    backup: "{{ ports_backup_conf }}"
+  loop: "{{ ports_portsnap_conf | dict2items }}"
+  tags: ports_conf_keys
+
+- name: "Config: Configure INDEX in {{ ports_portsnap_conf_file }}"
+  ansible.builtin.lineinfile:
+    path: "{{ ports_portsnap_conf_file }}"
+    regexp: ^\s*INDEX\s+(.*)$
+    line: INDEX INDEX-{{ ports_portsnap_index }} DESCRIBE.{{ ports_portsnap_index }}
+    backup: "{{ ports_backup_conf }}"
+
+- name: "Config: Configure REFUSE in {{ ports_portsnap_conf_file }}"
+  ansible.builtin.lineinfile:
+    path: "{{ ports_portsnap_conf_file }}"
+    regexp: ^\s*REFUSE\s+(.*)$
+    line: REFUSE {{ ports_portsnap_refuse }}
+    backup: "{{ ports_backup_conf }}"
+  when: ports_portsnap_refuse | length > 0
+
+- name: "Config: Remove REFUSE from {{ ports_portsnap_conf_file }}"
+  ansible.builtin.lineinfile:
+    path: "{{ ports_portsnap_conf_file }}"
+    regexp: ^\s*REFUSE\s+(.*)$
+    state: absent
+    backup: "{{ ports_backup_conf }}"
+  when: ports_portsnap_refuse | length == 0
+
+# EOF

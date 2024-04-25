@@ -1,24 +1,22 @@
 ---
-
-- name: "cron: Configure cron MAILTO={{ ports_cron_mailto }}"
+- name: "Cron: Configure cron MAILTO={{ ports_cron_mailto }}"
   community.general.cronvar:
     name: MAILTO
     value: "{{ ports_cron_mailto }}"
     user: "{{ ports_cron_user }}"
-  when: ports_cron_mailto|length > 0
+  when: ports_cron_mailto | length > 0
 
-- name: "cron: Configure cron to fetch a compressed snapshot of the ports tree"
+- name: "Cron: Configure cron to fetch a compressed snapshot of the ports tree"
   ansible.builtin.cron:
     name: "{{ ports_cron_name }}"
     job: "{{ ports_cron_command }}"
     user: "{{ ports_cron_user }}"
-    month: "{{ ports_cron_month|d(omit) }}"
-    day: "{{ ports_cron_day|d(omit) }}"
-    hour: "{{ ports_cron_hour|d(omit) }}"
-    minute: "{{ ports_cron_minute|d(omit) }}"
-    weekday: "{{ ports_cron_weekday|d(omit) }}"
-    special_time: "{{ ports_cron_special_time|d(omit) }}"
-    backup: "{{ ports_cron_backup|d(omit) }}"
+    month: "{{ ports_cron_month | d(omit) }}"
+    day: "{{ ports_cron_day | d(omit) }}"
+    hour: "{{ ports_cron_hour | d(omit) }}"
+    minute: "{{ ports_cron_minute | d(omit) }}"
+    weekday: "{{ ports_cron_weekday | d(omit) }}"
+    special_time: "{{ ports_cron_special_time | d(omit) }}"
+    backup: "{{ ports_cron_backup | d(omit) }}"
 
 # EOF
-...

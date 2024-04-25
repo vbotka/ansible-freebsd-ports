@@ -7,19 +7,27 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: ports_debug|bool
+  when: ports_debug | bool
   tags: ports_debug
 
-- name: Import conf.yml
-  ansible.builtin.import_tasks: conf.yml
-  tags: ports_conf
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
+  when: ports_sanity | bool
+  tags: ports_sanity
+
+- name: Import config.yml
+  ansible.builtin.import_tasks: config.yml
+  when: ports_config | bool
+  tags: ports_config
 
 - name: Import update.yml
   ansible.builtin.import_tasks: update.yml
-  when: ports_update|bool
+  when: ports_update | bool
   tags: ports_update
 
-- block:
+- name: Install and delete ports
+  when: freebsd_install_method | lower == 'ports'
+  block:
 
     - name: Import ports_delete.yml
       ansible.builtin.import_tasks: ports_delete.yml
@@ -29,17 +37,14 @@
       ansible.builtin.import_tasks: ports_install.yml
       tags: ports_install
 
-  when: freebsd_install_method|lower == 'ports'
-
 - name: Import cron.yml
   ansible.builtin.import_tasks: cron.yml
-  when: ports_cron|bool
+  when: ports_cron | bool
   tags: ports_cron
 
 - name: Import stat.yml
   ansible.builtin.import_tasks: stat.yml
-  when: ports_stat|bool
+  when: ports_stat | bool
   tags: ports_stat
 
 # EOF
-...
