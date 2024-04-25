@@ -1,5 +1,4 @@
 ---
-
 - name: Debug
   vars:
     msg: |-
@@ -26,29 +25,29 @@
       ports_portsnap_portsdir: {{ ports_portsnap_portsdir }}
       ports_portsnap_servername: {{ ports_portsnap_servername }}
       ports_portsnap_conf:
-        {{ ports_portsnap_conf|to_nice_yaml(indent=2)|indent(2) }}
+        {{ ports_portsnap_conf | to_nice_yaml(indent=2) | indent(2) }}
       ports_cron: {{ ports_cron }}
-      ports_cron_user: {{ ports_cron_user|d('UNDEFINED') }}
-      ports_cron_mailto: {{ ports_cron_mailto|d('UNDEFINED') }}
-      ports_cron_name: {{ ports_cron_name|d('UNDEFINED') }}
-      ports_cron_command: {{ ports_cron_command|d('UNDEFINED') }}
-      ports_cron_hour: {{ ports_cron_hour|d('UNDEFINED') }}
-      ports_cron_minute: {{ ports_cron_minute|d('UNDEFINED') }}
-      ports_cron_backup: {{ ports_cron_backup|d('UNDEFINED') }}
-      ports_cron_month: {{ ports_cron_month|d('UNDEFINED') }}
-      ports_cron_day: {{ ports_cron_day|d('UNDEFINED') }}
-      ports_cron_weekday: {{ ports_cron_weekday|d('UNDEFINED') }}
-      ports_cron_special_time: {{ ports_cron_special_time|d('UNDEFINED') }}
+      ports_cron_user: {{ ports_cron_user | d('UNDEFINED') }}
+      ports_cron_mailto: {{ ports_cron_mailto | d('UNDEFINED') }}
+      ports_cron_name: {{ ports_cron_name | d('UNDEFINED') }}
+      ports_cron_command: {{ ports_cron_command | d('UNDEFINED') }}
+      ports_cron_hour: {{ ports_cron_hour | d('UNDEFINED') }}
+      ports_cron_minute: {{ ports_cron_minute | d('UNDEFINED') }}
+      ports_cron_backup: {{ ports_cron_backup | d('UNDEFINED') }}
+      ports_cron_month: {{ ports_cron_month | d('UNDEFINED') }}
+      ports_cron_day: {{ ports_cron_day | d('UNDEFINED') }}
+      ports_cron_weekday: {{ ports_cron_weekday | d('UNDEFINED') }}
+      ports_cron_special_time: {{ ports_cron_special_time | d('UNDEFINED') }}
 
       pkg_dict:
-        {{ pkg_dict|to_nice_yaml(indent=2)|indent(2) }}
+        {{ pkg_dict | to_nice_yaml(indent=2) | indent(2) }}
       pkg_list:
-        {{ pkg_list|to_yaml(indent=2)|indent(2) }}
+        {{ pkg_list | to_yaml(indent=2) | indent(2) }}
       pkg_list_deinstall:
-        {{ pkg_list_deinstall|to_yaml(indent=2)|indent(2) }}
+        {{ pkg_list_deinstall | to_yaml(indent=2) | indent(2) }}
       pkg_dict_all: {{ pkg_dict_all }}
       pkg_dict_select:
-        {{ pkg_dict_select|to_nice_yaml(indent=2)|indent(2) }}
+        {{ pkg_dict_select | to_nice_yaml(indent=2) | indent(2) }}
       ports_stat: {{ ports_stat }}
       ports_outdated_enable: {{ ports_outdated_enable }}
 
@@ -56,4 +55,3 @@
     msg: "{{ '{}'.format(msg) }}"
 
 # EOF
-...

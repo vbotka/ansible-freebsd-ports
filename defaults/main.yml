@@ -18,10 +18,9 @@ pkg_list_deinstall: []
 pkg_dict_all: false
 # Sellect lists from pkg_dict
 pkg_dict_select: []
-
 # Configure portsnap
 ports_portsnap_index: "{{ ansible_distribution_major_version }}"
-ports_portsnap_refuse: ''
+ports_portsnap_refuse: ""
 ports_portsnap_conf_file: /etc/portsnap.conf
 ports_portsnap_workdir: /var/db/portsnap
 ports_portsnap_portsdir: /usr/ports
@@ -40,8 +39,8 @@ ports_cron_user: root
 ports_cron_mailto: root
 ports_cron_name: Fetch a compressed snapshot of the ports tree
 ports_cron_command: /usr/sbin/portsnap cron
-ports_cron_hour: '*/6'
-ports_cron_minute: '15'
+ports_cron_hour: "*/6"
+ports_cron_minute: "15"
 ports_cron_backup: true
 # ports_cron_month
 # ports_cron_day
@@ -51,10 +50,7 @@ ports_cron_backup: true
 # Status
 ports_stat: false
 ports_outdated_enable: false
-ports_outdated: "{{ dict(ansible_play_hosts|
-                         zip(ansible_play_hosts|
-                             map('extract', hostvars, ['ports_outdated_out', 'stdout_lines'])|
-                             map('map', 'split')|map('map', 'first'))) }}"
+ports_outdated: "{{ dict(ansible_play_hosts| zip(ansible_play_hosts| map('extract', hostvars, ['ports_outdated_out', 'stdout_lines'])| map('map', 'split')|map('map',
+  'first'))) }}"
 
 # EOF
-...

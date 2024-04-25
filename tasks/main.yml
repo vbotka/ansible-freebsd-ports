@@ -19,8 +19,9 @@
   when: ports_update|bool
   tags: ports_update
 
-- block:
+- when: freebsd_install_method|lower == 'ports'
 
+  block:
     - name: Import ports_delete.yml
       ansible.builtin.import_tasks: ports_delete.yml
       tags: ports_delete
@@ -28,8 +29,6 @@
     - name: Import ports_install.yml
       ansible.builtin.import_tasks: ports_install.yml
       tags: ports_install
-
-  when: freebsd_install_method|lower == 'ports'
 
 - name: Import cron.yml
   ansible.builtin.import_tasks: cron.yml
@@ -42,4 +41,3 @@
   tags: ports_stat
 
 # EOF
-...
