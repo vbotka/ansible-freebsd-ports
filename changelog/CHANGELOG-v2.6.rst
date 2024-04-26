@@ -14,6 +14,8 @@ Bugfix release.
 
 Major Changes
 -------------
+* Update README. Update portsnap.
+* Update vars/main.yml.sample. Update portsnap.
 
 Minor Changes
 -------------

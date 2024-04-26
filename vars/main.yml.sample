@@ -1,8 +1,22 @@
 ---
 # vars samples for freebsd_ports
 
-# pkg_dict_select:
-#   - minimal
+# Install minimal list of packages. See pkgdict_*
+pkg_dict_select:
+  - minimal
+
+# Backup changed configuration files
+ports_backup_conf: true
+
+# Do not change portsnap.conf. Change path to portsnap.conf when
+# ports-mgmt/portsnap was updated.
+ports_config: false
+ports_portsnap_conf_file: /usr/local/etc/portsnap.conf
+
+# Configure cron to fetch a compressed snapshot of the ports
+# tree. Change path to portsnap when ports-mgmt/portsnap was updated.
+ports_cron: true
+ports_cron_command: /usr/local/sbin/portsnap cron
 
 # EOF
 ...

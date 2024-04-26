@@ -59,10 +59,16 @@ pkgdict_i386.yml
 pkgdict_versions.yml
 ```
 
-* If you update *ports-mgmt/portsnap* change configuration file to */usr/local/etc/portsnap.conf*. The default is */etc/portsnap.conf*
+* If you update *ports-mgmt/portsnap* change the path to the configuration file. The default is */etc/portsnap.conf*
 
 ```yaml
 ports_portsnap_conf_file: /usr/local/etc/portsnap.conf
+```
+
+Also change the cron command. The default is */usr/sbin/portsnap cron*
+
+```yaml
+ports_cron_command: /usr/local/sbin/portsnap cron
 ```
 
 4) Create playbook
