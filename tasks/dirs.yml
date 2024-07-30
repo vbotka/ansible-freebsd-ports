@@ -1,0 +1,15 @@
+---
+- name: "Dirs: Create directories"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item.path }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  loop:
+    - {path: "{{ ports_portsnap_conf.PORTSDIR }}", owner: root, group: wheel, mode: "0755"}
+    - {path: "{{ ports_portsnap_conf.WORKDIR }}", owner: root, group: wheel, mode: "0755"}
+  loop_control:
+    label: "{{ item.path }}"
+
+# EOF

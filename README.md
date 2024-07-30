@@ -1,8 +1,10 @@
 # freebsd_ports
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_ports)[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-ports.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-ports)[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-ports)](https://github.com/vbotka/ansible-freebsd-ports/tags)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/freebsd_ports)
+[![Build Status](https://app.travis-ci.com/vbotka/ansible-freebsd-ports.svg?branch=master)](https://app.travis-ci.com/vbotka/ansible-freebsd-ports)
+[![GitHub tag](https://img.shields.io/github/v/tag/vbotka/ansible-freebsd-ports)](https://github.com/vbotka/ansible-freebsd-ports/tags)
 
-[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_ports/) FreeBSD. Install and update ports.
+[Ansible role.](https://galaxy.ansible.com/vbotka/freebsd_ports/) FreeBSD. Install, update, and upgrade ports.
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-freebsd-ports/issues).
 
@@ -40,7 +42,7 @@ Install the collection if necessary
 shell> ansible-galaxy collections install community.general
 ```
 
-3) Fit variables
+3) Fit variables to your needs
 
 * Set "freebsd_install_method=ports"
 
@@ -59,10 +61,16 @@ pkgdict_i386.yml
 pkgdict_versions.yml
 ```
 
-* If you update *ports-mgmt/portsnap* change configuration file to */usr/local/etc/portsnap.conf*. The default is */etc/portsnap.conf*
+* If you update *ports-mgmt/portsnap* change the path to the configuration file. The default is */etc/portsnap.conf*
 
 ```yaml
 ports_portsnap_conf_file: /usr/local/etc/portsnap.conf
+```
+
+Also change the cron command. The default is */usr/sbin/portsnap cron*
+
+```yaml
+ports_cron_command: /usr/local/sbin/portsnap cron
 ```
 
 4) Create playbook
@@ -89,28 +97,56 @@ Display variables
 shell> ansible-playbook freebsd-ports.yml -e ports_debug=true -t ports_debug
 ```
 
+Create directories
+
+```bash
+shell> ansible-playbook freebsd-ports.yml -t ports_dirs
+```
+
+Test sanity
+
+```bash
+shell> ansible-playbook freebsd-ports.yml -t ports_sanity -e ports_sanity=true
+```
+
+Create configuration
+
+```bash
+shell> ansible-playbook freebsd-ports.yml -t ports_config
+```
+
+Optionally, update the ports collection (this may take a while)
+
+```bash
+shell> ansible-playbook freebsd-ports.yml -t ports_update -e ports_update=true -e ports_debug=true
+```
+
 Dry-run the playbook and display changes
 
 ```bash
-shell> ansible-playbook freebsd-ports.yml --check --diff
+shell> ansible-playbook freebsd-ports.yml -e freebsd_install_method=ports --check --diff
 ```
 
-Optionally, update ports
+Dry-run the ports installation
 
 ```bash
-shell> ansible-playbook freebsd-ports.yml -t ports_update -e ports_update=true
+shell> ansible-playbook freebsd-ports.yml -e ports_dryrun=true -e freebsd_install_method=ports
 ```
 
-Dry-run the installation of the ports
+If all seems to be right manage the ports
 
 ```bash
-shell> ansible-playbook freebsd-ports.yml -e ports_dryrun=true
+shell> ansible-playbook freebsd-ports.yml -e freebsd_install_method=ports
 ```
 
-If all seems to be right manage the packages
+Hint. There are lot of skipped tasks. To make the output of the playbook easier to read:
+
+- Use callback plugin *community.general.yaml*
+
+- Disable skipped hosts *ANSIBLE_DISPLAY_SKIPPED_HOSTS=false*
 
 ```bash
-shell> ansible-playbook freebsd-ports.yml
+shell> > ANSIBLE_DISPLAY_SKIPPED_HOSTS=false ansible-playbook freebsd-ports.yml -e freebsd_install_method=ports
 ```
 
 
@@ -127,6 +163,8 @@ shell> ansible-lint -c .ansible-lint.local
 
 - [FreeBSD handbook: Using the Ports Collection](https://docs.freebsd.org/en/books/handbook/ports/#ports-using)
 - [FreeBSD handbook: Building Packages with Poudriere](https://docs.freebsd.org/en/books/handbook/ports/#ports-poudriere)
+- [portsnap](https://man.freebsd.org/cgi/man.cgi?portsnap(8))
+- [portsnap.conf](https://man.freebsd.org/cgi/man.cgi?portsnap.conf(5))
 - [poudriere](https://github.com/freebsd/poudriere/wiki)
 
 
