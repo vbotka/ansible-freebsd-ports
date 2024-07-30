@@ -10,6 +10,10 @@
   when: ports_debug | bool
   tags: ports_debug
 
+- name: Import dirs.yml
+  ansible.builtin.import_tasks: dirs.yml
+  tags: ports_dirs
+
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
   when: ports_sanity | bool

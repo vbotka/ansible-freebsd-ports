@@ -1,6 +1,6 @@
 ---
-- name: "Ports_install: Install individually from all lists in pkg_dict"
-  when: pkg_dict_all|d(false) | bool
+- name: Install individually from all lists in pkg_dict
+  when: pkg_dict_all | d(false) | bool
   tags: ports_install_all_indivindually
   block:
 
@@ -30,7 +30,7 @@
         var: result
       when: ports_debug | bool
 
-- name: "Ports_install: Install individually from selected lists in pkg_dict"
+- name: Install individually from selected lists in pkg_dict
   when: pkg_dict_select | length > 0
   tags: ports_install_selected_indivindually
   block:
@@ -61,7 +61,7 @@
         var: result
       when: ports_debug | bool
 
-- name: "Ports_install: Install individually from list pkg_list"
+- name: Install individually from list pkg_list
   when: pkg_list | length > 0
   tags: ports_install_list_indivindually
   block:

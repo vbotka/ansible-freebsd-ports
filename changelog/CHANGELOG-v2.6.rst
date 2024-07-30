@@ -10,15 +10,19 @@ vbotka.freebsd_ports 2.6 Release Notes
 
 Release Summary
 ---------------
-Bugfix release.
+Ansible 2.17 update
 
 Major Changes
 -------------
-* Update README. Update portsnap.
-* Update vars/main.yml.sample. Update portsnap.
+* Update README.
+* Update config and fix lint.
+* Add tasks dirs.yml
+* Change option update to auto in the command "portsnap auto"
 
 Minor Changes
 -------------
+* Add var ports_role_version
+* Update debug
 
 
 2.6.0

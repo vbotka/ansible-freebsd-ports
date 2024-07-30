@@ -3,7 +3,7 @@
   block:
 
     - name: "Update: Update ports (this may take a while)"
-      ansible.builtin.command: portsnap update
+      ansible.builtin.command: portsnap auto
       register: ports_updated_out
       changed_when: false
 
@@ -13,6 +13,7 @@
       when: ports_debug | bool
 
   rescue:
+
     - name: "Update: rescue: Debug"
       ansible.builtin.debug:
         msg: |

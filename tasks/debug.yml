@@ -2,6 +2,7 @@
 - name: "Debug ports_debug={{ ports_debug }}"
   vars:
     msg: |-
+      ports_role_version: {{ ports_role_version }}
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
       ansible_distribution: {{ ansible_distribution }}
