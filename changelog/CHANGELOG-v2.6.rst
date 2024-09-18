@@ -5,6 +5,17 @@ vbotka.freebsd_ports 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.3
+=====
+
+Release Summary
+---------------
+Maintenance update
+
+Major Changes
+-------------
+
+
 2.6.2
 =====
 
