@@ -1,6 +1,6 @@
 ---
 # defaults for freebsd_ports
-ports_role_version: 2.6.2
+ports_role_version: 2.6.3
 
 # Install params
 freebsd_install_method: ports
