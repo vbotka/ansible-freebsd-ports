@@ -5,6 +5,21 @@ vbotka.freebsd_ports 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.3
+=====
+
+Release Summary
+---------------
+Maintenance update
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+- Update python 3.11 in .travis.yml
+
+
 2.6.2
 =====
 
